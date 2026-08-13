@@ -1,0 +1,11 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark px-3" *ngIf="authService.currentUser()">
+  <span class="navbar-brand">Quản lý sản phẩm</span>
+  <div class="ms-auto d-flex align-items-center gap-3">
+    <span class="text-white">Xin chào, {{ authService.currentUser() }}</span>
+    <button class="btn btn-outline-light btn-sm" (click)="logout()">Đăng xuất</button>
+  </div>
+</nav>
+
+<h1 class="center" style="text-align: center;">Quản lý sản phẩm</h1>
+<app-toast></app-toast>
+<router-outlet></router-outlet>

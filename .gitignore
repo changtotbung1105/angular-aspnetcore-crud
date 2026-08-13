@@ -1,0 +1,19 @@
+# ===== Angular (client-app) =====
+client-app/node_modules/
+client-app/dist/
+client-app/.angular/cache/
+
+# ===== ASP.NET Core (Angular backend) =====
+Angular/bin/
+Angular/obj/
+Angular/publish/
+Angular/wwwroot/
+*.user
+Angular/.vs/
+
+# ===== Chung =====
+.DS_Store
+*.log
+
+Angular/appsettings.json
+Angular/appsettings.Development.json

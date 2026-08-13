@@ -1,0 +1,24 @@
+<div class="container mt-5" style="max-width: 400px;">
+  <h2 class="mb-4 text-center">Đăng nhập</h2>
+
+  <div *ngIf="errorMessage()" class="alert alert-danger">
+    {{ errorMessage() }}
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label class="form-label">Tên đăng nhập</label>
+      <input formControlName="username" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Mật khẩu</label>
+      <input formControlName="password" type="password" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" [disabled]="loading()">
+      <span *ngIf="loading()" class="spinner-border spinner-border-sm me-1"></span>
+      {{ loading() ? 'Đang đăng nhập...' : 'Đăng nhập' }}
+    </button>
+  </form>
+</div>
