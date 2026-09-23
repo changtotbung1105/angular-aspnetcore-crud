@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand bg-light px-3 mb-2">
+  <a class="navbar-brand" routerLink="/">Task Flow</a>
+  <div class="ms-auto d-flex align-items-center gap-2">
+    <a routerLink="/products" class="btn btn-outline-primary btn-sm">Sản phẩm</a>
+
+    @if (auth.isLoggedIn()) {
+      <span class="text-muted small">Xin chào, {{ auth.currentUsername() }}</span>
+      <button class="btn btn-outline-danger btn-sm" (click)="auth.logout()">Đăng xuất</button>
+    } @else {
+      <a routerLink="/login" class="btn btn-outline-primary btn-sm">Đăng nhập</a>
+      <a routerLink="/register" class="btn btn-success btn-sm">Đăng ký</a>
+    }
+  </div>
+</nav>
+
+<router-outlet />

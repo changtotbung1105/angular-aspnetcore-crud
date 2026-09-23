@@ -17,3 +17,37 @@ Angular/.vs/
 
 Angular/appsettings.json
 Angular/appsettings.Development.json
+
+# Dependencies
+/node_modules
+
+# Build output
+/dist
+/tmp
+/out-tsc
+
+# Angular cache
+.angular/cache
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Misc
+.DS_Store
+Thumbs.db
+
+# System files
+*.log
+# .NET build output
+**/bin/
+**/obj/
+
+# .NET secrets
+appsettings.Development.json
+appsettings.Local.json
+*.user
+
+# Database file nếu dùng SQLite local
+*.db

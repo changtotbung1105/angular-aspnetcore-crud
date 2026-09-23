@@ -1,0 +1,29 @@
+<div class="container mt-4" style="max-width: 400px;">
+  <h2 class="mb-3">Đăng ký tài khoản</h2>
+
+  @if (errorMessage()) {
+    <div class="alert alert-danger">{{ errorMessage() }}</div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label class="form-label">Username</label>
+      <input class="form-control" formControlName="username" />
+      @if (form.controls.username.invalid && form.controls.username.touched) {
+        <div class="text-danger small mt-1">Tối thiểu 3 ký tự.</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" formControlName="password" />
+      @if (form.controls.password.invalid && form.controls.password.touched) {
+        <div class="text-danger small mt-1">Tối thiểu 6 ký tự.</div>
+      }
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" [disabled]="submitting()">
+      Đăng ký
+    </button>
+  </form>
+</div>

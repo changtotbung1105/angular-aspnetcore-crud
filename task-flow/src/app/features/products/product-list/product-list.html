@@ -1,0 +1,58 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Sản phẩm</h2>
+    <a routerLink="/products/new" class="btn btn-success">+ Thêm sản phẩm</a>
+  </div>
+
+  <table class="table table-striped table-hover align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>Tên</th><th>Giá</th><th>Số lượng</th><th class="text-end">Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (p of productService.products(); track p.id) {
+        <tr>
+          <td>{{ p.name }}</td>
+          <td>{{ p.price | currency:'USD' }}</td>
+          <td>{{ p.quantity }}</td>
+          <td class="text-end">
+            <a [routerLink]="['/products/edit', p.id]" class="btn btn-sm btn-outline-primary me-2">Sửa</a>
+            <button class="btn btn-sm btn-outline-danger" (click)="delete(p.id)">Xoá</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr><td colspan="4" class="text-center text-muted">Chưa có sản phẩm nào.</td></tr>
+      }
+    </tbody>
+  </table>
+  @if (productService.totalPages() > 1) {
+  <nav aria-label="Product pagination">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="productService.pageNumber() === 1">
+        <button class="page-link" (click)="productService.goToPage(productService.pageNumber() - 1)">
+          &laquo;
+        </button>
+      </li>
+
+      @for (page of pagesToShow(); track $index) {
+        @if (page === '...') {
+          <li class="page-item disabled">
+            <span class="page-link">...</span>
+          </li>
+        } @else {
+  <li class="page-item" [class.active]="page === productService.pageNumber()">
+    <button class="page-link" (click)="productService.goToPage($any(page))">{{ page }}</button>
+  </li>
+        }
+      }
+
+      <li class="page-item" [class.disabled]="productService.pageNumber() === productService.totalPages()">
+        <button class="page-link" (click)="productService.goToPage(productService.pageNumber() + 1)">
+          &raquo;
+        </button>
+      </li>
+    </ul>
+  </nav>
+}
+</div>

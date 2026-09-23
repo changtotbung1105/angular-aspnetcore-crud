@@ -1,0 +1,9 @@
+<ul>
+  @for (task of taskService.tasks(); track task.id) {
+    <li [class.done]="task.done" (click)="taskService.toggle(task.id)">
+      {{ task.title }}
+    </li>
+  } @empty {
+    <li>No tasks yet.</li>
+  }
+</ul>
